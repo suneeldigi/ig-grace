@@ -1,6 +1,7 @@
 // lib/screens/home/home_screen.dart
 // The complete home screen — assembles all sections into a single beautiful page
 
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -422,8 +423,7 @@ class _HeroSection extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
 
     return Container(
-      height: size.height * 0.85,
-      constraints: const BoxConstraints(minHeight: 500),
+      constraints: BoxConstraints(minHeight: math.max(500, size.height * 0.85)),
       alignment: Alignment.center,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: isWide ? 80 : 24),

@@ -91,11 +91,12 @@ class _EndingSectionState extends State<EndingSection>
             maxBlastForce: 20,
           ),
 
+          // Sparkle decoration (needs a bounded-size ancestor, so it lives
+          // in this Stack rather than directly inside the Column below)
+          const Positioned.fill(child: SparkleWidget(sparkleCount: 6)),
+
           Column(
             children: [
-              // Sparkle decoration
-              const SparkleWidget(sparkleCount: 6),
-
               // Big pulsing heart
               GestureDetector(
                 onTap: _onHeartTap,

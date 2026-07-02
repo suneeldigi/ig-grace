@@ -181,6 +181,7 @@ class _LoveTimerSectionState extends State<LoveTimerSection> {
       _TimerUnit(label: 'Hours', value: duration.hours, emoji: '⏰'),
       _TimerUnit(label: 'Minutes', value: duration.minutes, emoji: '⌛'),
       _TimerUnit(label: 'Seconds', value: duration.seconds, emoji: '💓'),
+      _TimerUnit(label: 'Milliseconds', value: duration.milliseconds, emoji: '✨'),
     ];
 
     return Wrap(
@@ -204,6 +205,24 @@ class _LoveTimerSectionState extends State<LoveTimerSection> {
 
   Widget _buildTimerUnit(_TimerUnit unit, int index) {
     final isSeconds = unit.label == 'Seconds';
+    final isMilliseconds = unit.label == 'Milliseconds';
+    final digits = isMilliseconds ? 3 : 2;
+
+    final digitStyle = GoogleFonts.lato(
+      fontSize: isMilliseconds ? 32 : 40,
+      color: isSeconds ? AppColors.hotPink : Colors.white,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 2,
+      fontFeatures: const [FontFeature.tabularFigures()],
+      shadows: isSeconds
+          ? [
+              Shadow(
+                color: AppColors.hotPink.withOpacity(0.6),
+                blurRadius: 15,
+              ),
+            ]
+          : null,
+    );
 
     return GlowCard(
       glowColor: isSeconds ? AppColors.hotPink : AppColors.roseGold,
@@ -213,32 +232,23 @@ class _LoveTimerSectionState extends State<LoveTimerSection> {
         children: [
           Text(unit.emoji, style: const TextStyle(fontSize: 22)),
           const Gap(6),
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder: (child, anim) => ScaleTransition(
-              scale: anim,
-              child: child,
-            ),
-            child: Text(
-              unit.value.toString().padLeft(2, '0'),
-              key: ValueKey('${unit.label}_${unit.value}'),
-              style: GoogleFonts.lato(
-                fontSize: 40,
-                color: isSeconds ? AppColors.hotPink : Colors.white,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 2,
-                fontFeatures: const [FontFeature.tabularFigures()],
-                shadows: isSeconds
-                    ? [
-                        Shadow(
-                          color: AppColors.hotPink.withOpacity(0.6),
-                          blurRadius: 15,
-                        ),
-                      ]
-                    : null,
-              ),
-            ),
-          ),
+          // Runs its own fast timer in an isolated leaf widget so the
+          // 30fps ms tick doesn't force the whole (glowing, blurred) section
+          // to rebuild — that was causing app-wide jank.
+          isMilliseconds
+              ? _MillisecondsDigit(style: digitStyle)
+              : AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (child, anim) => ScaleTransition(
+                    scale: anim,
+                    child: child,
+                  ),
+                  child: Text(
+                    unit.value.toString().padLeft(digits, '0'),
+                    key: ValueKey('${unit.label}_${unit.value}'),
+                    style: digitStyle,
+                  ),
+                ),
           const Gap(4),
           Text(
             unit.label,
@@ -260,4 +270,38 @@ class _TimerUnit {
   final int value;
   final String emoji;
   const _TimerUnit({required this.label, required this.value, required this.emoji});
+}
+
+/// Ticks the millisecond digit on its own fast timer, isolated so only
+/// this leaf widget rebuilds 30x/sec instead of the whole section.
+class _MillisecondsDigit extends StatefulWidget {
+  final TextStyle style;
+  const _MillisecondsDigit({required this.style});
+
+  @override
+  State<_MillisecondsDigit> createState() => _MillisecondsDigitState();
+}
+
+class _MillisecondsDigitState extends State<_MillisecondsDigit> {
+  late Timer _timer;
+  int _ms = DateTime.now().millisecond;
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(milliseconds: 33), (_) {
+      if (mounted) setState(() => _ms = DateTime.now().millisecond);
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(_ms.toString().padLeft(3, '0'), style: widget.style);
+  }
 }

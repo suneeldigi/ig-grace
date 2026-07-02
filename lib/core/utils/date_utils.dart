@@ -30,6 +30,7 @@ class LoveDateUtils {
         hours: 0,
         minutes: 0,
         seconds: 0,
+        milliseconds: 0,
         totalSeconds: 0,
       );
     }
@@ -81,6 +82,7 @@ class LoveDateUtils {
       hours: hours,
       minutes: minutes,
       seconds: seconds,
+      milliseconds: now.millisecond,
       totalSeconds: totalSeconds,
     );
   }
@@ -146,6 +148,7 @@ class LoveDuration {
   final int hours;
   final int minutes;
   final int seconds;
+  final int milliseconds;
   final int totalSeconds;
 
   const LoveDuration({
@@ -155,6 +158,7 @@ class LoveDuration {
     required this.hours,
     required this.minutes,
     required this.seconds,
+    required this.milliseconds,
     required this.totalSeconds,
   });
 }

@@ -1,0 +1,26 @@
+{
+  "name": "ig-grace",
+  "version": "1.0.0",
+  "description": "readme",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suneeldigi/ig-grace.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/suneeldigi/ig-grace/issues"
+  },
+  "homepage": "https://github.com/suneeldigi/ig-grace#readme",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
