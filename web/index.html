@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder used by the flutter tool.
+    If you remove this line the build will fail.
+  -->
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A premium romantic website made only for My Grace ❤️">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="My Wifeu My Grace">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>My Wifeu ❤️ My Grace</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Google Fonts preload -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Satisfy&family=Dancing+Script:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a0015 0%, #2d0030 50%, #0d0020 100%);
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a0015 0%, #2d0030 50%, #0d0020 100%);
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    #loading .heart {
+      font-size: 60px;
+      animation: heartbeat 1s ease-in-out infinite;
+    }
+
+    #loading .title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #ffb3c6;
+      margin-top: 20px;
+      text-shadow: 0 0 20px rgba(255,105,135,0.8);
+    }
+
+    #loading .subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2rem;
+      color: rgba(255,179,198,0.7);
+      margin-top: 10px;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="heart">❤️</div>
+    <div class="title">My Wifeu ❤️ My Grace</div>
+    <div class="subtitle">Loading your love story...</div>
+  </div>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      const loading = document.getElementById('loading');
+      if (loading) {
+        loading.style.opacity = '0';
+        setTimeout(() => loading.remove(), 500);
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
