@@ -177,6 +177,15 @@ class GallerySection extends StatelessWidget {
               ),
             ),
 
+            // Actual Image Layer (loads image if present, transparent fallback on error)
+            Image.asset(
+              item.path,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const SizedBox.shrink();
+              },
+            ),
+
             // Bottom label overlay
             Positioned(
               bottom: 0,

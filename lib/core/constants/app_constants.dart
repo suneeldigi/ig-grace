@@ -27,22 +27,22 @@ class AppConstants {
   static const String iconsPath = 'assets/icons/';
 
   // === PLACEHOLDER IMAGES (to be replaced) ===
-  static const String placeholderEyes = 'assets/images/placeholder_eyes.png';
-  static const String placeholderNose = 'assets/images/placeholder_nose.png';
-  static const String placeholderLips = 'assets/images/placeholder_lips.png';
-  static const String placeholderForehead = 'assets/images/placeholder_forehead.png';
+  static const String placeholderEyes = 'assets/images/placeholder_eyes.jpeg';
+  static const String placeholderNose = 'assets/images/placeholder_nose.jpeg';
+  static const String placeholderLips = 'assets/images/placeholder_lips.jpeg';
+  static const String placeholderForehead = 'assets/images/placeholder_forehead.jpeg';
   static const String placeholderAngry = 'assets/images/placeholder_angry.png';
   static const String placeholderSad = 'assets/images/placeholder_sad.png';
-  static const String placeholderGallery1 = 'assets/images/gallery_1.png';
-  static const String placeholderGallery2 = 'assets/images/gallery_2.png';
-  static const String placeholderGallery3 = 'assets/images/gallery_3.png';
-  static const String placeholderGallery4 = 'assets/images/gallery_4.png';
-  static const String placeholderGallery5 = 'assets/images/gallery_5.png';
-  static const String placeholderGallery6 = 'assets/images/gallery_6.png';
-  static const String placeholderMemory1 = 'assets/images/memory_1.png';
-  static const String placeholderMemory2 = 'assets/images/memory_2.png';
-  static const String placeholderMemory3 = 'assets/images/memory_3.png';
-  static const String placeholderMemory4 = 'assets/images/memory_4.png';
+  static const String placeholderGallery1 = 'assets/images/gallery_1.jpeg';
+  static const String placeholderGallery2 = 'assets/images/gallery_2.jpeg';
+  static const String placeholderGallery3 = 'assets/images/gallery_3.jpeg';
+  static const String placeholderGallery4 = 'assets/images/gallery_4.jpeg';
+  static const String placeholderGallery5 = 'assets/images/gallery_1.jpeg';
+  static const String placeholderGallery6 = 'assets/images/gallery_3.jpeg';
+  static const String placeholderMemory1 = 'assets/images/memory_1.jpeg';
+  static const String placeholderMemory2 = 'assets/images/gallery_1.jpeg';
+  static const String placeholderMemory3 = 'assets/images/gallery_1.jpeg';
+  static const String placeholderMemory4 = 'assets/images/gallery_1.jpeg';
 
   // === ROUTES ===
   static const String loginRoute = '/';

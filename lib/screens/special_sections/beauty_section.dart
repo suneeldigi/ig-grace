@@ -184,54 +184,69 @@ class _BeautyCardState extends State<_BeautyCard> {
       ),
       child: Stack(
         alignment: Alignment.center,
+        fit: StackFit.expand,
         children: [
-          // Glow circle behind emoji
-          Container(
-            width: 120,
-            height: 120,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: widget.glowColor.withOpacity(0.15),
-              boxShadow: [
-                BoxShadow(
-                  color: widget.glowColor.withOpacity(0.3),
-                  blurRadius: 40,
-                  spreadRadius: 10,
+          // Fallback placeholder content
+          Positioned.fill(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: widget.glowColor.withOpacity(0.15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: widget.glowColor.withOpacity(0.3),
+                        blurRadius: 40,
+                        spreadRadius: 10,
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(widget.emoji, style: const TextStyle(fontSize: 60))
+                        .animate(onPlay: (c) => c.repeat(reverse: true))
+                        .scale(
+                          begin: const Offset(1, 1),
+                          end: const Offset(1.1, 1.1),
+                          duration: 2000.ms,
+                          curve: Curves.easeInOut,
+                        ),
+                    const Gap(16),
+                    Text(
+                      'Photo Coming Soon 📸',
+                      style: GoogleFonts.lato(
+                        fontSize: 13,
+                        color: widget.glowColor.withOpacity(0.7),
+                        letterSpacing: 0.5,
+                      ),
+                    ),
+                    const Gap(4),
+                    Text(
+                      '(Place image at ${widget.imagePath})',
+                      style: GoogleFonts.lato(
+                        fontSize: 10,
+                        color: Colors.white.withOpacity(0.25),
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
-
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(widget.emoji, style: const TextStyle(fontSize: 60))
-                  .animate(onPlay: (c) => c.repeat(reverse: true))
-                  .scale(
-                    begin: const Offset(1, 1),
-                    end: const Offset(1.1, 1.1),
-                    duration: 2000.ms,
-                    curve: Curves.easeInOut,
-                  ),
-              const Gap(16),
-              Text(
-                'Photo Coming Soon 📸',
-                style: GoogleFonts.lato(
-                  fontSize: 13,
-                  color: widget.glowColor.withOpacity(0.7),
-                  letterSpacing: 0.5,
-                ),
-              ),
-              const Gap(4),
-              Text(
-                '(Place image at ${widget.imagePath})',
-                style: GoogleFonts.lato(
-                  fontSize: 10,
-                  color: Colors.white.withOpacity(0.25),
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
+          // Actual Image (only shown if present)
+          Image.asset(
+            widget.imagePath,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const SizedBox.shrink();
+            },
           ),
         ],
       ),
@@ -421,33 +436,45 @@ class AngerSection extends StatelessWidget {
           ],
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('😤', style: const TextStyle(fontSize: 70))
-                .animate(onPlay: (c) => c.repeat(reverse: true))
-                .moveX(begin: -5, end: 5, duration: 300.ms),
-            const Gap(12),
-            Text(
-              'Cute Angry Baby',
-              style: GoogleFonts.dancingScript(
-                fontSize: 18,
-                color: AppColors.roseGold.withOpacity(0.8),
-                fontWeight: FontWeight.w700,
-              ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('😤', style: const TextStyle(fontSize: 70))
+                    .animate(onPlay: (c) => c.repeat(reverse: true))
+                    .moveX(begin: -5, end: 5, duration: 300.ms),
+                const Gap(12),
+                Text(
+                  'Cute Angry Baby',
+                  style: GoogleFonts.dancingScript(
+                    fontSize: 18,
+                    color: AppColors.roseGold.withOpacity(0.8),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const Gap(4),
+                Text(
+                  '(Add photo: ${AppConstants.placeholderAngry})',
+                  style: GoogleFonts.lato(
+                    fontSize: 10,
+                    color: Colors.white.withOpacity(0.2),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-            const Gap(4),
-            Text(
-              '(Add photo: ${AppConstants.placeholderAngry})',
-              style: GoogleFonts.lato(
-                fontSize: 10,
-                color: Colors.white.withOpacity(0.2),
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+          ),
+          Image.asset(
+            AppConstants.placeholderAngry,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const SizedBox.shrink();
+            },
+          ),
+        ],
       ),
     );
   }
@@ -549,38 +576,50 @@ class SadSection extends StatelessWidget {
           ],
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('🥺', style: const TextStyle(fontSize: 70))
-                .animate(onPlay: (c) => c.repeat(reverse: true))
-                .scale(
-                  begin: const Offset(1, 1),
-                  end: const Offset(1.05, 1.05),
-                  duration: 2000.ms,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('🥺', style: const TextStyle(fontSize: 70))
+                    .animate(onPlay: (c) => c.repeat(reverse: true))
+                    .scale(
+                      begin: const Offset(1, 1),
+                      end: const Offset(1.05, 1.05),
+                      duration: 2000.ms,
+                    ),
+                const Gap(12),
+                Text(
+                  'Never Sad, Always Smiling',
+                  style: GoogleFonts.dancingScript(
+                    fontSize: 16,
+                    color: AppColors.softPurple.withOpacity(0.8),
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-            const Gap(12),
-            Text(
-              'Never Sad, Always Smiling',
-              style: GoogleFonts.dancingScript(
-                fontSize: 16,
-                color: AppColors.softPurple.withOpacity(0.8),
-                fontWeight: FontWeight.w700,
-              ),
-              textAlign: TextAlign.center,
+                const Gap(4),
+                Text(
+                  '(Add photo: ${AppConstants.placeholderSad})',
+                  style: GoogleFonts.lato(
+                    fontSize: 10,
+                    color: Colors.white.withOpacity(0.2),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
-            const Gap(4),
-            Text(
-              '(Add photo: ${AppConstants.placeholderSad})',
-              style: GoogleFonts.lato(
-                fontSize: 10,
-                color: Colors.white.withOpacity(0.2),
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
+          ),
+          Image.asset(
+            AppConstants.placeholderSad,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) {
+              return const SizedBox.shrink();
+            },
+          ),
+        ],
       ),
     );
   }

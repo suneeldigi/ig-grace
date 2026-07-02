@@ -202,23 +202,39 @@ class MemoriesSection extends StatelessWidget {
 
                   const Spacer(),
 
-                  // Photo placeholder
+                  // Photo display or placeholder
                   Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: memory.color.withOpacity(0.15),
-                        border: Border.all(
-                          color: memory.color.withOpacity(0.3),
-                        ),
-                      ),
-                      child: Text(
-                        memory.path.split('/').last,
-                        style: GoogleFonts.lato(
-                          fontSize: 11,
-                          color: memory.color.withOpacity(0.7),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Container(
+                        height: 110,
+                        width: double.infinity,
+                        color: memory.color.withOpacity(0.05),
+                        child: Image.asset(
+                          memory.path,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 8),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: memory.color.withOpacity(0.15),
+                                  border: Border.all(
+                                    color: memory.color.withOpacity(0.3),
+                                  ),
+                                ),
+                                child: Text(
+                                  memory.path.split('/').last,
+                                  style: GoogleFonts.lato(
+                                    fontSize: 11,
+                                    color: memory.color.withOpacity(0.7),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
