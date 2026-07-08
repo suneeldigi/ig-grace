@@ -9,6 +9,7 @@ import 'screens/login/login_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/apology/apology_screen.dart';
 import 'screens/forever/forever_screen.dart';
+import 'screens/my_grace/my_grace_screen.dart';
 
 void main() {
   runApp(const MyWifeuApp());
@@ -33,6 +34,7 @@ class MyWifeuApp extends StatelessWidget {
         AppConstants.homeRoute: (_) => const HomeScreen(),
         AppConstants.apologyRoute: (_) => const ApologyScreen(),
         AppConstants.foreverRoute: (_) => const ForeverScreen(),
+        AppConstants.myGraceRoute: (_) => const MyGraceScreen(),
       },
 
       // === PAGE TRANSITIONS ===
@@ -51,6 +53,9 @@ class MyWifeuApp extends StatelessWidget {
             break;
           case AppConstants.foreverRoute:
             page = const ForeverScreen();
+            break;
+          case AppConstants.myGraceRoute:
+            page = const MyGraceScreen();
             break;
           default:
             page = const LoginScreen();
