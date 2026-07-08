@@ -44,9 +44,17 @@ class AppConstants {
   static const String placeholderMemory3 = 'assets/images/gallery_1.jpeg';
   static const String placeholderMemory4 = 'assets/images/gallery_1.jpeg';
 
+  // === APOLOGY / SURPRISE SCREEN PHOTOS ===
+  static const String placeholderLove1 = 'assets/images/loveslide1.jpeg';
+  static const String placeholderLove2 = 'assets/images/loveslide2.jpeg';
+  static const String placeholderLove3 = 'assets/images/loveslide3.jpeg';
+  static const String placeholderForeverPhoto = 'assets/images/loveslide1.jpeg';
+
   // === ROUTES ===
   static const String loginRoute = '/';
   static const String homeRoute = '/home';
+  static const String apologyRoute = '/apology';
+  static const String foreverRoute = '/forever';
 
   // === ANIMATION DURATIONS ===
   static const Duration fastAnimation = Duration(milliseconds: 300);
