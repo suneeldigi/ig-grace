@@ -55,6 +55,7 @@ class AppConstants {
   static const String homeRoute = '/home';
   static const String apologyRoute = '/apology';
   static const String foreverRoute = '/forever';
+  static const String myGraceRoute = '/my-grace';
 
   // === ANIMATION DURATIONS ===
   static const Duration fastAnimation = Duration(milliseconds: 300);

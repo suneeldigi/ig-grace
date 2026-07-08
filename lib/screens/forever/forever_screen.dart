@@ -99,6 +99,63 @@ class ForeverScreen extends StatelessWidget {
                         ).animate().fadeIn(delay: 600.ms, duration: 900.ms),
 
                         const Gap(40),
+
+                        // === NEXT BUTTON ===
+                        SizedBox(
+                          width: isWide ? 420 : double.infinity,
+                          height: 64,
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              gradient: AppColors.pinkGradient,
+                              borderRadius: BorderRadius.circular(32),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: AppColors.hotPink.withOpacity(0.55),
+                                  blurRadius: 30,
+                                  spreadRadius: 2,
+                                  offset: const Offset(0, 8),
+                                ),
+                              ],
+                            ),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pushNamed(
+                                  AppConstants.myGraceRoute,
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.transparent,
+                                shadowColor: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Next',
+                                    style: GoogleFonts.dancingScript(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white,
+                                      letterSpacing: 1,
+                                    ),
+                                  ),
+                                  const Gap(8),
+                                  const Text('❤️',
+                                      style: TextStyle(fontSize: 20)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                            .animate()
+                            .fadeIn(delay: 800.ms, duration: 800.ms)
+                            .scale(
+                              begin: const Offset(0.9, 0.9),
+                              curve: Curves.easeOut,
+                            ),
                       ],
                     ),
                   ),
