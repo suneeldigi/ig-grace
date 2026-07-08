@@ -266,82 +266,89 @@ class _ApologyScreenState extends State<ApologyScreen> {
       child: Container(
         color: Colors.black.withOpacity(0.55),
         child: Center(
-          child: GlassCard(
-            width: isWide ? 480 : null,
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            padding: const EdgeInsets.all(36),
-            borderRadius: 28,
-            borderColor: AppColors.hotPink.withOpacity(0.6),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('❤️', style: TextStyle(fontSize: 56))
-                    .animate(onPlay: (c) => c.repeat(reverse: true))
-                    .scale(
-                      begin: const Offset(1, 1),
-                      end: const Offset(1.2, 1.2),
-                      duration: 700.ms,
-                    ),
-                const Gap(16),
-                ShaderMask(
-                  shaderCallback: (b) => AppColors.pinkGradient.createShader(b),
-                  child: Text(
-                    AppStrings.forgivePopupTitle,
-                    style: GoogleFonts.dancingScript(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const Gap(16),
-                Text(
-                  AppStrings.forgivePopupBody,
-                  style: GoogleFonts.lato(
-                    fontSize: 16,
-                    color: Colors.white.withOpacity(0.9),
-                    height: 1.8,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                const Gap(28),
-                SizedBox(
-                  width: double.infinity,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      gradient: AppColors.pinkGradient,
-                      borderRadius: BorderRadius.circular(28),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.hotPink.withOpacity(0.5),
-                          blurRadius: 20,
-                          offset: const Offset(0, 6),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: MediaQuery.sizeOf(context).height - 48,
+            ),
+            child: GlassCard(
+              width: isWide ? 480 : null,
+              margin: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.all(isWide ? 36 : 20),
+              borderRadius: 28,
+              borderColor: AppColors.hotPink.withOpacity(0.6),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text('❤️', style: TextStyle(fontSize: 56))
+                        .animate(onPlay: (c) => c.repeat(reverse: true))
+                        .scale(
+                          begin: const Offset(1, 1),
+                          end: const Offset(1.2, 1.2),
+                          duration: 700.ms,
                         ),
-                      ],
-                    ),
-                    child: ElevatedButton(
-                      onPressed: _closePopupAndContinue,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                      ),
+                    const Gap(16),
+                    ShaderMask(
+                      shaderCallback: (b) => AppColors.pinkGradient.createShader(b),
                       child: Text(
-                        'Forever Yours ❤️',
+                        AppStrings.forgivePopupTitle,
                         style: GoogleFonts.dancingScript(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 30,
                           color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const Gap(16),
+                    Text(
+                      AppStrings.forgivePopupBody,
+                      style: GoogleFonts.lato(
+                        fontSize: 16,
+                        color: Colors.white.withOpacity(0.9),
+                        height: 1.8,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const Gap(28),
+                    SizedBox(
+                      width: double.infinity,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: AppColors.pinkGradient,
+                          borderRadius: BorderRadius.circular(28),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.hotPink.withOpacity(0.5),
+                              blurRadius: 20,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                        ),
+                        child: ElevatedButton(
+                          onPressed: _closePopupAndContinue,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(28),
+                            ),
+                          ),
+                          child: Text(
+                            'Forever Yours ❤️',
+                            style: GoogleFonts.dancingScript(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           )
               .animate()
