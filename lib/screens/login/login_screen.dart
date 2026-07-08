@@ -131,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen>
 
       await Future.delayed(const Duration(seconds: 3));
       if (mounted) {
-        Navigator.of(context).pushReplacementNamed(AppConstants.homeRoute);
+        Navigator.of(context).pushReplacementNamed(AppConstants.apologyRoute);
       }
     } else {
       // ❌ Wrong

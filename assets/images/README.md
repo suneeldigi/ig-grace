@@ -25,6 +25,13 @@ Place your personal photos here with these exact filenames:
 - memory_3.png — Our story
 - memory_4.png — Forever mine
 
+### Apology / Surprise Screen Photos
+- love1.jpg — Slider photo 1
+- love2.jpg — Slider photo 2
+- love3.jpg — Slider photo 3
+- love4.jpg — Slider photo 4
+- forever_us.jpg — The biggest photo shown on the final "Forever Us" page
+
 ## Fonts
 Place downloaded TTF fonts here:
 - GreatVibes-Regular.ttf — From Google Fonts

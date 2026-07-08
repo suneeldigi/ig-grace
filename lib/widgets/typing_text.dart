@@ -13,6 +13,8 @@ class TypingText extends StatefulWidget {
   final int deletingSpeedMs;
   final int pauseMs;
   final bool showCursor;
+  final bool loop;
+  final VoidCallback? onComplete;
 
   const TypingText({
     super.key,
@@ -22,6 +24,8 @@ class TypingText extends StatefulWidget {
     this.deletingSpeedMs = 30,
     this.pauseMs = 2500,
     this.showCursor = true,
+    this.loop = true,
+    this.onComplete,
   });
 
   @override
@@ -35,6 +39,7 @@ class _TypingTextState extends State<TypingText>
   bool _isTyping = true;
   Timer? _timer;
   int _charIndex = 0;
+  bool _completedOnce = false;
 
   // For cursor blink
   late AnimationController _cursorController;
@@ -68,8 +73,13 @@ class _TypingTextState extends State<TypingText>
           _charIndex++;
         });
       } else {
-        // Done typing — pause then delete
+        // Done typing this text
         _timer?.cancel();
+        if (!_completedOnce) {
+          _completedOnce = true;
+          widget.onComplete?.call();
+        }
+        if (!widget.loop) return;
         Future.delayed(Duration(milliseconds: widget.pauseMs), () {
           if (mounted) {
             _isTyping = false;

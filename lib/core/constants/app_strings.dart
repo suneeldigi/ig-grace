@@ -328,6 +328,81 @@ P.S. — I love you more than you. ❤️''';
   static const String quizCompleteMessage = 'Masha Allah! You know me so well! ❤️';
 
   // ============================================================
+  //  APOLOGY / SURPRISE SCREEN
+  // ============================================================
+  static const String apologyTypingText = "❤️ I'm Sorry My Love ❤️";
+
+  static const String apologyMessage = '''My Wifeu,
+
+If anything I said hurt you,
+I'm truly sorry.
+
+Hurting you was never my intention.
+
+Your smile is my favorite thing in this world.
+
+I don't want to win arguments.
+
+I just want to keep loving you forever.
+
+Please forgive your Grey once.
+
+I Love You More Than You. ❤️''';
+
+  static const String valentineCardTitle = "Happy Valentine's Day My Wifeu ❤️";
+
+  static const String valentineCardParagraph = '''Every single day I spend with you feels like Valentine's Day, Jaan.
+I don't need a red heart on the calendar to remind me to love you —
+you make ordinary Tuesdays feel like celebrations,
+lazy afternoons feel like poetry,
+and quiet, sleepy video calls feel like the most romantic moments of my life.
+
+Some people wait an entire year for one day to feel this loved.
+I get to feel it every single morning I wake up knowing you exist,
+every night I fall asleep thinking about your smile,
+and every moment in between where your name crosses my mind
+and my heart just... smiles.
+
+You are not a gift I received once — you are the gift I keep unwrapping,
+a little more, every single day, and somehow you're even more beautiful
+and more precious than the day before.
+
+Life gave me many things, Grace, but nothing —
+absolutely nothing — compares to the gift of you.
+So happy Valentine's Day, my love.
+Today, tomorrow, and every day I have left to give you. ❤️''';
+
+  static const List<String> loveReasons = [
+    '❤️ Your beautiful eyes',
+    '❤️ Your cute smile',
+    '❤️ Your caring nature',
+    '❤️ Your innocent face',
+    '❤️ The way you make my heart feel peaceful',
+    '❤️ Your tiny nose ring',
+    '❤️ Your forehead with a cute bindi',
+    '❤️ Your laugh',
+    '❤️ Everything about you',
+  ];
+
+  static const String forgiveButtonText = 'Forgive Your Grey ❤️';
+
+  static const String forgivePopupTitle = 'Thank You My Wifeu ❤️';
+
+  static const String forgivePopupBody = '''No matter what happens,
+
+I promise to love you,
+
+respect you,
+
+understand you,
+
+and always choose you.
+
+I Love You More Than You Forever. ❤️''';
+
+  static const String foreverTitle = 'Forever Us ❤️';
+
+  // ============================================================
   //  FOOTER
   // ============================================================
   static const String footerMadeBy = 'Made with endless love by';
